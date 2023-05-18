@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-const api = {
-  key: process.env.REACT_APP_API_KEY,
-  base: process.env.REACT_APP_API_URL,
-};
 
 function App() {
   const [query, setQuery] = useState("");
@@ -10,7 +6,7 @@ function App() {
 
   const search = (evt) => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      fetch(`${process.env.REACT_APP_API_URL}weather?q=${query}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
         .then((res) => res.json())
         .then((result) => {
           setWeather(result);
